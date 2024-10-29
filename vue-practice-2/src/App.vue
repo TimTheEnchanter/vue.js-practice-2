@@ -9,6 +9,7 @@ const message = ref('Hello World!')
 const titleClass = ref('title')
 const count = ref(0)
 const text = ref('')
+const awesome = ref(true)
 
 console.log(message.value) // "Hello World!"
 console.log(counter.count) // 0
@@ -20,6 +21,11 @@ function increment() {
   // update component state
   count.value++
 }
+
+function toggle() {
+  awesome.value = !awesome.value
+}
+
 </script>
 
 <template>
@@ -32,6 +38,10 @@ function increment() {
 
   <input v-model="text" placeholder="Type here">
   <p>{{ text }}</p>
+
+  <button @click="toggle">Toggle</button>
+  <h1 v-if="awesome">Vue is awesome!</h1>
+  <h1 v-else>Angular is da best</h1>
 </template>
 
 <style>
