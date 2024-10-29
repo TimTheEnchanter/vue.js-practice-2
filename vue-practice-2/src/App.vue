@@ -7,11 +7,18 @@ const counter = reactive({
 })
 const message = ref('Hello World!')
 const titleClass = ref('title')
+const count = ref(0)
 
 console.log(message.value) // "Hello World!"
 console.log(counter.count) // 0
 counter.count++
 message.value = 'Changed'
+
+
+function increment() {
+  // update component state
+  count.value++
+}
 </script>
 
 <template>
@@ -19,6 +26,8 @@ message.value = 'Changed'
   <h1>{{ message.split('').reverse().join('') }}</h1>
   <h1>{{ message }}</h1>
 	<p>Count is: {{ counter.count }}</p>
+
+  <button @click="increment">Count is: {{ count }}</button>
 </template>
 
 <style>
