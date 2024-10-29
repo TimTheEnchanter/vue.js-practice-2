@@ -8,6 +8,7 @@ const counter = reactive({
 const message = ref('Hello World!')
 const titleClass = ref('title')
 const count = ref(0)
+const text = ref('')
 
 console.log(message.value) // "Hello World!"
 console.log(counter.count) // 0
@@ -28,6 +29,9 @@ function increment() {
 	<p>Count is: {{ counter.count }}</p>
 
   <button @click="increment">Count is: {{ count }}</button>
+
+  <input v-model="text" placeholder="Type here">
+  <p>{{ text }}</p>
 </template>
 
 <style>
