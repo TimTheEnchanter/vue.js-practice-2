@@ -2,6 +2,8 @@
 import { reactive, ref } from 'vue'
 // component logic
 // declare some reactive state here.
+let id = 0
+
 const counter = reactive({
   count: 0
 })
@@ -10,6 +12,14 @@ const titleClass = ref('title')
 const count = ref(0)
 const text = ref('')
 const awesome = ref(true)
+
+const newTodo = ref('')
+const todos = ref([
+  { id: id++, text: 'Learn HTML' },
+  { id: id++, text: 'Learn JavaScript' },
+  { id: id++, text: 'Learn Vue' }
+])
+
 
 console.log(message.value) // "Hello World!"
 console.log(counter.count) // 0
@@ -26,6 +36,14 @@ function toggle() {
   awesome.value = !awesome.value
 }
 
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value })
+  newTodo.value = ''
+}
+
+function removeTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo)
+}
 </script>
 
 <template>
@@ -42,6 +60,18 @@ function toggle() {
   <button @click="toggle">Toggle</button>
   <h1 v-if="awesome">Vue is awesome!</h1>
   <h1 v-else>Angular is da best</h1>
+
+
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo" required placeholder="new todo">
+    <button>Add Todo</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      {{ todo.text }}
+      <button @click="removeTodo(todo)">X</button>
+    </li>
+  </ul>
 </template>
 
 <style>
