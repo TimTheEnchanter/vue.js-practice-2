@@ -1,6 +1,5 @@
 <script setup>
-import { ref } from 'vue'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 // component logic
 // declare some reactive state here.
 const counter = reactive({
