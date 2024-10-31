@@ -1,5 +1,6 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
+
 // component logic
 // declare some reactive state here.
 let id = 0
@@ -12,6 +13,7 @@ const titleClass = ref('title')
 const count = ref(0)
 const text = ref('')
 const awesome = ref(true)
+const pElementRef = ref(null)
 
 const newTodo = ref('')
 const todos = ref([
@@ -44,6 +46,10 @@ function addTodo() {
 function removeTodo(todo) {
   todos.value = todos.value.filter((t) => t !== todo)
 }
+
+onMounted(() => {
+  pElementRef.value.textContent += " dudes!"
+})
 </script>
 
 <template>
@@ -72,6 +78,8 @@ function removeTodo(todo) {
       <button @click="removeTodo(todo)">X</button>
     </li>
   </ul>
+
+  <p ref="pElementRef">Hello</p>
 </template>
 
 <style>
