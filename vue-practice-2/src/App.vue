@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, onMounted, watch } from 'vue'
 
 // component logic
 // declare some reactive state here.
@@ -49,6 +49,11 @@ function removeTodo(todo) {
 
 onMounted(() => {
   pElementRef.value.textContent += " dudes!"
+})
+
+watch(count, (newCount) => {
+  
+  console.log(`new count is: ${newCount}`)
 })
 </script>
 
