@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref, onMounted, watch } from 'vue'
+import ChildComp from './ChildComp.vue'
 
 // component logic
 // declare some reactive state here.
@@ -52,7 +53,7 @@ onMounted(() => {
 })
 
 watch(count, (newCount) => {
-  
+
   console.log(`new count is: ${newCount}`)
 })
 </script>
@@ -85,6 +86,8 @@ watch(count, (newCount) => {
   </ul>
 
   <p ref="pElementRef">Hello</p>
+
+  <ChildComp />
 </template>
 
 <style>
