@@ -104,7 +104,9 @@ watch(count, (newCount) => {
 
   <p ref="pElementRef">Hello</p>
 
-  <ChildComp :msg="greeting" @response="(msg) => childMsg = msg" />
+  <ChildComp :msg="greeting" @response="(msg) => childMsg = msg">
+    Just slotting some content in here.
+  </ChildComp>
   <p>{{ childMsg }}</p>
 </template>
 
