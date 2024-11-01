@@ -62,11 +62,17 @@ const props = defineProps({
   msg: String
 })
 
+//Emits
+const childMsg = ref('No child msg yet')
+const emit = defineEmits(['response'])
+emit('response', 'hello from child')
+
 //Watcher
 watch(count, (newCount) => {
 
   console.log(`new count is: ${newCount}`)
 })
+
 </script>
 
 <template>
@@ -98,7 +104,8 @@ watch(count, (newCount) => {
 
   <p ref="pElementRef">Hello</p>
 
-  <ChildComp :msg="greeting" />
+  <ChildComp :msg="greeting" @response="(msg) => childMsg = msg" />
+  <p>{{ childMsg }}</p>
 </template>
 
 <style>
