@@ -35,10 +35,12 @@ function increment() {
   count.value++
 }
 
+//Conditional Rendering
 function toggle() {
   awesome.value = !awesome.value
 }
 
+//Rendering a list
 function addTodo() {
   todos.value.push({ id: id++, text: newTodo.value })
   newTodo.value = ''
@@ -48,10 +50,19 @@ function removeTodo(todo) {
   todos.value = todos.value.filter((t) => t !== todo)
 }
 
+//Lifecycle hooks
 onMounted(() => {
   pElementRef.value.textContent += " dudes!"
 })
 
+//Props
+const greeting = ref('Hello from parent')
+
+const props = defineProps({
+  msg: String
+})
+
+//Watcher
 watch(count, (newCount) => {
 
   console.log(`new count is: ${newCount}`)
@@ -87,7 +98,7 @@ watch(count, (newCount) => {
 
   <p ref="pElementRef">Hello</p>
 
-  <ChildComp />
+  <ChildComp :msg="greeting" />
 </template>
 
 <style>
