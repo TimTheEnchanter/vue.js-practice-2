@@ -1,2 +1,2 @@
 # vue.js-practice-2
- electric boogaloo
+ crud setup in vue.js
